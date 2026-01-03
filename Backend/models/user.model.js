@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
         // minlength: [6, 'Password must be at least 6 chraceters long' ],
-        selelct: false,
+        select: false,
     },
 
     socketId: {
@@ -40,8 +40,8 @@ const userSchema = new mongoose.Schema({
 
 })
 
-userSchema.methods.generateAuthTOken = function () {
-    const token = jwt.sign({_id: this_id} , process.constrainedMemory.JWT_SECRET);
+userSchema.methods.generateAuthToken = function () {
+    const token = jwt.sign({_id: this._id} , process.env.JWT_SECRET);
     return token;
 }
 
