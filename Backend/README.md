@@ -230,3 +230,119 @@ THe erequest body should be in JSON format and include the following fields:
   - `email` (string )" User's email address (must be a valid email).
   - `password` (string ): Usser's password (minimum 6 character).
 - `token` (string): JWT Token
+
+---
+
+### User Profile
+
+#### `GET /users/profile`
+
+**Description:**  
+Fetches the profile of the currently authenticated user. The endpoint requires the user to be logged in and authenticated.
+
+---
+
+### Request Details
+
+**URL:**
+```
+GET /users/profile
+```
+
+**Headers:**
+```
+Authorization: Bearer <token>
+```
+
+---
+
+### Response
+
+#### Success Response (Status: 200 OK)
+```json
+{
+  "_id": "507f1f77bcf86cd799439011",
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "user@example.com",
+  "socketId": null,
+  "__v": 0
+}
+```
+
+#### Error Response - Unauthorized (Status: 401 Unauthorized)
+```json
+{
+  "message": "Authentication required"
+}
+```
+
+---
+
+### User Logout
+
+#### `GET /users/logout`
+
+**Description:**  
+Logs out the currently authenticated user by clearing the authentication token and blacklisting it.
+
+---
+
+### Request Details
+
+**URL:**
+```
+GET /users/logout
+```
+
+**Headers:**
+```
+Authorization: Bearer <token>
+```
+
+---
+
+### Response
+
+#### Success Response (Status: 200 OK)
+```json
+{
+  "message": "Logged out"
+}
+```
+
+#### Error Response - Unauthorized (Status: 401 Unauthorized)
+```json
+{
+  "message": "Authentication required"
+}
+```
+
+### Exmaple Response
+
+- `user` (onject):
+  - `fullname` (object ).
+     - `firstname` (string ) : User's firstname (minimum 3 Characters).
+     - `lastname` (string ) : User's lastname (minimum 3 Characters).
+  - `email` (string )" User's email address (must be a valid email).
+
+  ## '/users/logout' Endpoint
+
+  ### Description
+
+  Logout the current user and blacklist the token provided tin the cookie or headers
+
+### HTTP Mehtod
+
+'GET'
+
+### Authentication
+
+Requires a valid JWT token in the Authorization header:
+
+  - `password` (string ): Usser's password (minimum 6 character).
+- `token` (string): JWT Token
+
+---
